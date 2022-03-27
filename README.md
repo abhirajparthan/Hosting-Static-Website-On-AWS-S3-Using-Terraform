@@ -12,6 +12,11 @@ Amazon S3 is a service offered by Amazon Web Services that provides object stora
 
 AWS account with Secreat_key and Access_key (  with policies for the S3 )
 
+------
+## Diagram
+
+![abhiraj123](https://user-images.githubusercontent.com/100773790/160301663-cead2e5a-5199-4fff-b36c-39563d2abed9.png)
+
 -----
 ## Table of Contents
 
