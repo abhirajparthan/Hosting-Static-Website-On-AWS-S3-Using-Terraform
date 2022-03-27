@@ -166,7 +166,7 @@ resource "aws_route53_record" "CNAME" {
 
 ## Output
 
-The output will print the Static website endpointand the Domain name like this.
+The output will print the Static website end point and the Domain name like this.
 
 ![Screenshot from 2022-03-28 01-31-39](https://user-images.githubusercontent.com/100773790/160299989-91de6d3d-1641-482f-bcf3-841546cc213e.png)
 
