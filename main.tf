@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "allow_access_from_public" {
     }
     
     actions = [
-      "s3:GetObject","s3:PutObject",
+      "s3:GetObject",
     ]
 
     resources = [
