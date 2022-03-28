@@ -30,7 +30,7 @@ Now, let’s get into it!
 
 ## 1 - Create an S3 bucket
 
- I have created a bucket with the name "s3.abhiraj.ga" and I added the access permission "public-read" to the bucket.
+ I have created a bucket with the name "s3.abhiraj.ga" in the location us-east-1.
 ~~~
 #++++++++++++++++++++++++++++++++++++++++++++++++++
 # S3 Creation with public read acces
