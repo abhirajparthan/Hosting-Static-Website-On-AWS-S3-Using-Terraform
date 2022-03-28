@@ -19,6 +19,11 @@ variable "project" 	{
 	default = "s3.abhiraj.ga"
 }
 
+variable "domain"      {
+
+        default = "abhiraj.ga"
+}
+
 
 variable "mime_types" {
   default = {
