@@ -48,13 +48,6 @@ resource "aws_s3_bucket" "abhirajs3" {
   }
 }
 
-resource "aws_s3_bucket_acl" "abhiraj" {
-
-  bucket = aws_s3_bucket.abhirajs3.id
-
-  acl    = "public-read"
-}
-
 ~~~
 
 ## 2 - Enabling static website hosting for bucket
@@ -88,24 +81,13 @@ Here I have added the bucket policy for public access.
 #Bucket policy for access
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
-resource "aws_s3_bucket" "policy" {
- bucket = aws_s3_bucket.abhirajs3.bucket
-}
-
-resource "aws_s3_bucket_policy" "allow_access_from_public" {
-
-  bucket = aws_s3_bucket.abhirajs3.id
-  policy = data.aws_iam_policy_document.allow_access_from_public.json
-}
-
 data "aws_iam_policy_document" "allow_access_from_public" {
   statement {
     principals {
       type        = "AWS"
       identifiers = ["*"]
     }
-
+    
     actions = [
       "s3:GetObject","s3:PutObject",
     ]
@@ -116,7 +98,16 @@ data "aws_iam_policy_document" "allow_access_from_public" {
     ]
   }
 }
+
+
+resource "aws_s3_bucket_policy" "allow_access_from_public" {
+
+  bucket = aws_s3_bucket.abhirajs3.id
+  policy = data.aws_iam_policy_document.allow_access_from_public.json
+}
+
 ~~~
+
 
 ## 4 - Upload web files to S3 bucket
 
@@ -153,14 +144,14 @@ Here the static website end point added as CNAME in the rout 53 through script.
 
 data "aws_route53_zone" "zone" {
 
-  name         = "abhiraj.ga"
+  name         = var.domain
 
 }
 
 resource "aws_route53_record" "CNAME" {
 
   zone_id = data.aws_route53_zone.zone.zone_id
-  name    = "s3.abhiraj.ga"
+  name    = var.project
   type    = "CNAME"
   ttl     = "10"
   records = [aws_s3_bucket_website_configuration.static.website_endpoint]
